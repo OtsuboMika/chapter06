@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export const Header = () => {
     return (
-        <header>
-            <Link to="/">リンク</Link>
+        <header className='header'>
+          <a className='header-link' href='/'>Blog</a>
+          <a className='header-link' href='/content'>お問い合わせ</a>
         </header>
     )
 }
