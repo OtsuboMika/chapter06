@@ -8,23 +8,9 @@
   padding: 24px;
 }
 
-.header-link {
+.headerLink {
   color: #fff;
   text-decoration: none;
 }
 
-.container {
-  margin: 40px auto;
-  max-width: 800px;
-}
 
-.postWrapper {
-  border: 1px solid #ccc;
-  display: flex;
-  margin: 30px;
-  padding: 20px;
-}
-
-.postList {
-  list-style: none;
-}

@@ -1,6 +1,5 @@
-import '../src/css/App.css';
 import { Header } from './Header';
-import { Main } from './Main'
+import { Main } from './Main';
 
 function App() {
   return (
@@ -10,6 +9,6 @@ function App() {
 
     </div>
   );
-}
+};
 
 export default App;
