@@ -1,11 +1,17 @@
-import { Header } from './Header';
-import { Main } from './Main';
+import { Header } from './components/Header';
+import { Main } from './pages/Main';
+import { Detail } from './pages/Detail';
+import { Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
     <div className="App">
     <Header />
-    <Main />
+    <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/posts/:id" element={<Detail />} />
+    </Routes>
 
     </div>
   );
