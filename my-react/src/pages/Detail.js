@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 export const Detail = () => {
   const { id } = useParams(); 
-  const post = posts?.find((post) => post.id === parseInt(id, 10));
+  const post = posts.find((post) => post.id === parseInt(id, 10));
 
   if (!post) {
     return <p>記事が見つかりません</p>;
