@@ -30,7 +30,11 @@ export const Main = () => {
   }
 
   if (error) {
-    return <p>記事が見つかりません</p>;
+    return <p>エラーが発生しました</p>;
+  }
+
+  if (!posts) {
+    return <p>記事がみつかりませんでした</p>
   }
 
   return(
