@@ -33,7 +33,7 @@ export const Main = () => {
     return <p>エラーが発生しました</p>;
   }
 
-  if (!posts) {
+  if (posts.length === 0) {
     return <p>記事がみつかりませんでした</p>
   }
 
