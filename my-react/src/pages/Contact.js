@@ -33,14 +33,23 @@ export const Contact = () => {
     return errors;
   };
 
+  const handleClear = () => {
+    setName('');
+    setEmail('');
+    setMessage('');
+    setErrors({});
+    setSubmitError('');
+    };
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // フォームのデフォルトの送信動作を防ぐ（ページリロードなど）
     const validationErrors = validate(); // 入力値をチェックし、バリデーションエラーを取得
     setErrors(validationErrors); // エラーがある場合は、errors ステートに格納
     setSubmitError('');
     
-    if (Object.keys(validationErrors).length === 0) { // エラーがない場合のみ処理を続行
-      setIsSubmitting(true);
+    if (Object.keys(validationErrors).length !== 0) return; // エラーがない場合のみ処理を続行
+
+    setIsSubmitting(true); //送信中状態にする（ボタンを無効化）
       try {
         const response = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts",
           {
@@ -50,16 +59,13 @@ export const Contact = () => {
           });
           if (!response.ok) {throw new Error("送信に失敗しました。エラーが発生しました。");}
             alert("お問い合わせが送信されました。");
-            setName('');
-            setEmail('');
-            setMessage('');
-            setErrors({});
+            handleClear();
       } catch (error) {
       setSubmitError(error.message);
       } finally {
       setIsSubmitting(false);
       }
-    }
+    
   };
 
   return (
@@ -115,7 +121,7 @@ export const Contact = () => {
         
         <div className={classes.Contact_formGroup}>
           <button className={classes.Contact_formSubmit} type="submit" disabled={isSubmitting}>送信</button>
-          <button className={classes.Contact_formReset} type="reset" onClick={() => { setName(''); setEmail(''); setMessage(''); setErrors({}); setSubmitError(''); }} disabled={isSubmitting}>クリア</button>
+          <button className={classes.Contact_formReset} type="reset" onClick={handleClear} disabled={isSubmitting}>クリア</button>
         </div>
 
       </form>
